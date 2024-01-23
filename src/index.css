@@ -1,0 +1,35 @@
+/* Import Tailwind CSS styles */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Add your custom styles here */
+
+/* Custom styles for the body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Custom styles for the login form */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Custom styles for the input fields */
+.input-field {
+  margin-bottom: 1rem;
+}
+
+/* Custom styles for the submit button */
+.submit-button {
+  width: 100%;
+}
+
+/* Additional styling for links, if needed */
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+/* Add more custom styles as needed */
