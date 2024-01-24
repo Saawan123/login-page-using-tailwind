@@ -30,6 +30,8 @@
 // };
 
 // export default Login;
+import Data from "../Components/Data"
+
 import Header from "../Components/Header"
 import LoginCommon from "../Components/LoginCommon"
 
@@ -37,13 +39,14 @@ import LoginCommon from "../Components/LoginCommon"
 export default function LoginPage(){
     return(
         <>
-             <Header
+             {/* <Header
                 heading="Login to your account"
                 paragraph="Don't have an account yet? "
                 linkName="Signup"
                 linkUrl="/signup"
-                />
+                /> */}
               <LoginCommon/>
+              {/* <Data/> */}
         </>
     )
 }

@@ -1,44 +1,52 @@
+import React, { useState } from "react";
+import { eyeButtonHidden, eyeButtonShow } from "../assets/Icons/Icons";
 
-// const InputField = ({ type = 'text', placeholder, value, onChange, customClass }:any) => (
-//   <input
-//     className={customClass ? customClass :"border rounded-md p-2 w-full focus:outline-none focus:border-blue-500"}
-//     type={type}
-//     placeholder={placeholder}
-//     value={value}
-//     onChange={onChange}
-//   />
-// );
-
-// export default InputField;
-const fixedInputClass="rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+const fixedInputClass =
+  "rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm";
 
 export default function Input({
-    handleChange,
-    value,
-    labelText,
-    labelFor,
-    id,
-    name,
-    type,
-    isRequired=false,
-    placeholder,
-    customClass
-}:any){
-    return(
-        <div className="my-5">
-            <label htmlFor={labelFor} className="sr-only">
-              {labelText}
-            </label>
-            <input
-              onChange={handleChange}
-              value={value}
-              id={id}
-              name={name}
-              type={type}
-              required={isRequired}
-              className={fixedInputClass+customClass}
-              placeholder={placeholder}
-            />
+  handleChange,
+  value,
+  labelText,
+  labelFor,
+  id,
+  name,
+  type,
+  isRequired = false,
+  placeholder,
+  customClass,
+}: any) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div className={`my-5 ${isHovered && type === "password" ? "hover-visible" : ""}`}>
+      <label htmlFor={labelFor} className="sr-only">
+        {labelText}
+      </label>
+      <div className="relative">
+        <input
+          onChange={handleChange}
+          value={value}
+          id={id}
+          name={name}
+          type={isHovered ? "text" : type}
+          required={isRequired}
+          className={fixedInputClass + customClass}
+          placeholder={placeholder}
+        />
+        {type === "password" && (
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+            <button
+              type="button"
+              className="text-gray-500 hover:text-gray-700 hover:outline-none hover:ring"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {isHovered ? <>{eyeButtonShow}</> : <>{eyeButtonHidden}</>}
+            </button>
           </div>
-    )
+        )}
+      </div>
+    </div>
+  );
 }

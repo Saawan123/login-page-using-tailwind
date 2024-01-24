@@ -11,10 +11,10 @@ export default function Header({
             <div className="flex justify-center">
                 <img 
                     alt=""
-                    className="h-14 w-14"
+                    className="h-24 w-24"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZBGL2TqWehzG3yqye6OdEp4FARusr0Z6hfE_wwuEGA&s"/>
             </div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 ">
                 {heading}
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600 mt-5">

@@ -1,13 +1,13 @@
 const loginFields=[
     {
-        labelText:"Email address",
-        labelFor:"email-address",
-        id:"email-address",
-        name:"email",
-        type:"email",
-        autoComplete:"email",
+        labelText:"Token Number",
+        labelFor:"token-number",
+        id:"token-number",
+        name:"token",
+        // type:"email",
+        autoComplete:"token",
         isRequired:true,
-        placeholder:"Email address"   
+        placeholder:"Token Number"   
     },
     {
         labelText:"Password",
