@@ -7,7 +7,7 @@
 
 /* Custom styles for the body */
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -33,4 +33,5 @@ a {
   text-decoration: underline;
 }
 
-/* Add more custom styles as needed */
+
+

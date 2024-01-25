@@ -74,7 +74,7 @@ const fixedColumns: ColumnsType<FixedDataType> = [
 
 const fixedData: FixedDataType[] = [];
 for (let i = 0; i < 20; i += 1) {
-  console.log(i,"00000")
+  console.log(i, "00000");
   fixedData.push({
     key: i,
     name: ["Light", "Bamboo", "Little"][i % 3],
@@ -90,7 +90,7 @@ const Data: React.FC = () => (
       pagination={false}
       bordered
       summary={(pageData) => {
-        console.log(pageData,"00000")
+        console.log(pageData, "00000");
         let totalBorrow = 0;
         let totalRepayment = 0;
         pageData.map(({ borrow, repayment }) => {

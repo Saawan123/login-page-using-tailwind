@@ -1,5 +1,11 @@
 export const eyeButtonShow: any = [
-  <svg viewBox="0 0 24 24" height={"30px"} width={"30px"} fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    viewBox="0 0 24 24"
+    height={"25px"}
+    width={"25px"}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g
       id="SVGRepo_tracerCarrier"
@@ -27,7 +33,13 @@ export const eyeButtonShow: any = [
 ];
 
 export const eyeButtonHidden: any = [
-  <svg viewBox="0 0 24 24" height={"25px"} width={"25px"} fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    viewBox="0 0 24 24"
+    height={"25px"}
+    width={"25px"}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g
       id="SVGRepo_tracerCarrier"
@@ -44,5 +56,13 @@ export const eyeButtonHidden: any = [
         stroke-linejoin="round"
       ></path>{" "}
     </g>
+  </svg>,
+];
+
+export const hamburgerIcon = [
+  <svg fill="green" viewBox="0 0 100 80" width="40" height="40">
+    <rect width="100" height="10"></rect>
+    <rect y="30" width="100" height="10"></rect>
+    <rect y="60" width="100" height="10"></rect>
   </svg>,
 ];

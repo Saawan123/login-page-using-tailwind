@@ -19,11 +19,15 @@ export default function Input({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className={`my-5 ${isHovered && type === "password" ? "hover-visible" : ""}`}>
+    <div className="my-5">
       <label htmlFor={labelFor} className="sr-only">
         {labelText}
       </label>
-      <div className="relative">
+      <div
+        className={`relative ${
+          isHovered && type === "password" ? "hover-visible" : ""
+        }`}
+      >
         <input
           onChange={handleChange}
           value={value}
@@ -35,12 +39,14 @@ export default function Input({
           placeholder={placeholder}
         />
         {type === "password" && (
-          <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+          <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+          >
             <button
               type="button"
               className="text-gray-500 hover:text-gray-700 hover:outline-none hover:ring"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
             >
               {isHovered ? <>{eyeButtonShow}</> : <>{eyeButtonHidden}</>}
             </button>
@@ -50,3 +56,57 @@ export default function Input({
     </div>
   );
 }
+
+// import {useState } from "react";
+
+// import { eyeButtonHidden, eyeButtonShow } from "../assets/Icons/Icons";
+// import { searchIcon } from "../lib/icon";
+
+// export default function Input({
+//   handleChange,
+//   value,
+//   labelText,
+//   labelFor,
+//   id,
+//   name,
+//   type,
+//   isRequired = false,
+//   placeholder,
+//   customClass,
+// }: any) {
+// const [isHovered, setIsHovered] = useState(false);
+
+//   return (
+//     <div className="d-flex my-3">
+//        {/* {firstView && (
+//         <div className="mt-2 px-2 position-absolute">
+//           <span className="srchIcon">
+//             "hello"
+//           </span>
+//         </div>
+//       )} */}
+
+//            <input
+//           onChange={handleChange}
+//           value={value}
+//           id={id}
+//           name={name}
+//           type={isHovered ? "text" : type}
+//           required={isRequired}
+//           className={customClass}
+//           placeholder={placeholder}
+//         />
+
+//       {type === "password" && (
+//           <div className=" inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+//             <button
+//               type="button"
+//               className="text-gray-500 hover:text-gray-700 hover:outline-none hover:ring"
+//             >
+//               {isHovered ? <>{eyeButtonShow}</> : <>{eyeButtonHidden}</>}
+//             </button>
+//           </div>
+//         )}
+//     </div>
+//   );
+// };

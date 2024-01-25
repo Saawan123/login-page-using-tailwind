@@ -1,24 +1,12 @@
-
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-
-import LoginPage from './Pages/Login';
-import SignupPage from './Pages/SignUp';
-import ForgetPassword from "./Pages/ForgetPassword";
+import ErrorBoundary from "./Components/ErrorBoundary";
+import PageRouter from "./Routes/PageRouter";
 function App() {
   return (
-   
-     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/signup" element={<SignupPage/>} />
-            <Route path="/forget-password" element={<ForgetPassword/>} />
-        </Routes>
-      </BrowserRouter>
-
+    <>
+      <ErrorBoundary>
+        <PageRouter />
+      </ErrorBoundary>
+    </>
   );
 }
 
