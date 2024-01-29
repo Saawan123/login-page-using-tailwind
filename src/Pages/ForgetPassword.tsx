@@ -74,6 +74,7 @@ import { useState } from "react";
 import Input from "../Components/Input";
 import ToastifyShow from "../Components/ToastifyShow";
 import { useNavigate } from "react-router-dom";
+import Button from "../Components/Button";
 
 // Dummy user data
 let users = [
@@ -90,10 +91,8 @@ export default function Forgot() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    // Find user by token
-    const user: any = users.find((u) => u.token === token);
-    if (user || user.password === currentPassword) {
-      // Update user password
+    const user = users.find((u) => u.token === token);
+    if (user && (user.password === currentPassword || currentPassword === "")) {
       user.password = newPassword;
       ToastifyShow("Password successfully changed!", "success");
       navigate("/login");
@@ -137,9 +136,7 @@ export default function Forgot() {
         isRequired={true}
         placeholder="Enter your new password"
       />
-      <button type="submit" className="...">
-        Change Password
-      </button>
+      <Button handleSubmit={handleSubmit} text="Change Password" />
     </form>
   );
 }

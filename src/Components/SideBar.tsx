@@ -31,7 +31,7 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
     {
       name: "LogOut",
       icon: logoutIcon,
-      link: "/",
+      link: "/login",
       onClick: () => {
         localStorage.clear();
         ToastifyShow("Logout successfully", "success");

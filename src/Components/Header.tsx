@@ -3,21 +3,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-    const listHeader = ["Home", "About", "Contact"];
 
     return (
     <div className="bg-green-900 py-4">
         <div className="container mx-auto">
-            <div className="flex flex-row">
-              {listHeader.map((item) => {
-                return (
-                  <Link to={`/${item}`} key={item}>
-                    <div className="px-4">
-                      <p className="text-white capitalize">{item}</p>
-                    </div>
-                  </Link>
-                );
-              })}
+            <div className="">
+              This is Header
             </div>
         </div>
     </div>

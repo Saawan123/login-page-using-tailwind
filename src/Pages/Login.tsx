@@ -7,6 +7,7 @@ import { loginFields } from "../Components/FormFields";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 import FormExtra from "../Components/FormExtra";
+import ToastifyShow from "../Components/ToastifyShow";
 const fields = loginFields;
 let fieldsState: any = {};
 fields.forEach((field: any) => (fieldsState[field.id] = ""));
@@ -20,7 +21,13 @@ export default function Login() {
   useEffect(() => {
     if (isLoggedIn) {
       const role = localStorage.getItem("role");
-      navigate(`/${role}`);
+      if(role==="user"){
+
+        navigate(`/${role}`);
+      }
+      else{
+        navigate("/dashboard")
+      }
     }
   }, [isLoggedIn]);
   const handleChange = (e: any) => {
@@ -35,7 +42,8 @@ export default function Login() {
       localStorage.setItem("token", dummyToken);
       localStorage.setItem("role", role); // Store the role in localStorage
       console.log("Token set in localStorage:", localStorage.getItem("token"));
-      alert("Authentication success! Dummy token set.");
+      // alert("Authentication success! Dummy token set.");
+      ToastifyShow("Authentication success! Dummy token set.","success")
       return true;
     }
     return false;
@@ -45,9 +53,16 @@ export default function Login() {
     e.preventDefault();
     if (authenticateUser(loginState?.tokenNumber, loginState?.password)) {
       const role = localStorage.getItem("role"); // Get the role from localStorage
-      navigate(`/${role}`);
+       if(role ==="user"){
+
+        navigate(`/${role}`);
+      }
+      else{
+        navigate("/dashboard")
+      }
     } else {
-      alert("Authentication failed. Please check your credentials.");
+      ToastifyShow("Authentication failed. Please check your credentials","error")
+      // alert("Authentication failed. Please check your credentials.");
     }
   };
 
