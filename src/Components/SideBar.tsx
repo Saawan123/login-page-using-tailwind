@@ -1,106 +1,93 @@
-import { useState } from "react";
-import { eyeButtonShow, hamburgerIcon } from "../assets/Icons/Icons";
 import { NavLink, useNavigate } from "react-router-dom";
-const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
-//   const [toggle, setToggle] = useState(false);
-  const navigate = useNavigate();
+import ToastifyShow from "./ToastifyShow";
+import {
+  GraphIcon,
+  hamburgerIcon,
+  logoutIcon,
+  serviceIcon,
+  settingIcon,
+} from "../assets/Icons/Icons";
+import swarajLogo from "../assets/swaraj.jpg";
 
+const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
+  const navigate = useNavigate();
   const menu = [
     {
       name: "Dashboard",
-      icon:eyeButtonShow,
-   
-      submenu: [],
-      link: "",
+      icon: GraphIcon,
+      link: "/dashboard",
     },
     {
-      icon:eyeButtonShow,
-      name: "Contact",
-    // //   icon: BuyersIcon,
-      link: "manage-listings",
-      submenu: [],
-    },
-    {
-      icon:eyeButtonShow,
       name: "Services",
-    // //   icon: SellersIcon,
-      link: "manage-seller",
-      submenu: [],
+      icon: serviceIcon,
+      link: "/service",
     },
+
     {
       name: "Settings",
-      icon:eyeButtonShow,
-
-    // //   icon: MarketingIcon,
-      link: "marketing",
-      submenu: [],
+      icon: settingIcon,
+      link: "/setting",
     },
     {
-      name: "Reports",
-      icon:eyeButtonShow,
-
-    // //   icon: ChartlineIcon,
-      link: "report",
-      submenu: [],
+      name: "LogOut",
+      icon: logoutIcon,
+      link: "/",
+      onClick: () => {
+        localStorage.clear();
+        ToastifyShow("Logout successfully", "success");
+      },
     },
-    {
-      name: "Admins",
-      icon:eyeButtonShow,
-
-    // //   icon: settingIcon,
-      link: "admin-panel",
-      submenu: [],
-    },
-    {
-        name: "LogOut",
-        icon:eyeButtonShow,
-  
-      // //   icon: settingIcon,
-        link: "/login",
-        submenu: [],
-      }
-
   ];
+
   return (
-    <>
-      {showSidebar ? (
-        <button
-          className="flex text-4xl text-white items-center cursor-pointer fixed left-10 top-6 z-50"
-          onClick={() => setShowSidebar(!showSidebar)}
-        >
-          x
-        </button>
-      ) : (
-        <div
-          className="fixed  z-30 flex items-center cursor-pointer left-10 top-6"
-          onClick={() => setShowSidebar(!showSidebar)}
-        >
-          {hamburgerIcon}
+    <aside
+      className={`${
+        isSidebarOpen ? "w-64" : "w-20"
+      } h-screen fixed top-0 left-0 bg-green-900 transition-all ease-in-out duration-300`}
+    >
+      <div className="flex gap-x-10">
+        <div>
+          <img
+            src={swarajLogo}
+            alt="logo"
+            className="cursor-pointer max-w-full mt-2 m-1"
+            onClick={() => {
+              navigate("/login");
+              localStorage.clear();
+            }}
+            draggable={false}
+          />
         </div>
-      )}
-      <div
-        className={`top-0 left-0 w-[35vw] bg-green-600 p-10 pl-20 text-white fixed h-full z-40 ease-in-out duration-300 ${
-          showSidebar ? "translate-x-0 " : "-translate-x-full"
-        }`}
-      >
-        <div className="top-0 left-0 w-[35vw] bg-green-600 p-10 pl-20 text-white fixed h-full ">
-        <nav className="mt-10">
-        {menu.map((item:any, index:any) => (
+        <div>
+          <span
+            className="menu-icon cursor-pointer absolute right-0 mt-2 m-3"
+            onClick={onToggle}
+          >
+            {hamburgerIcon}
+          </span>
+        </div>
+      </div>
+
+      <nav className="mt-12 overflow-y-auto">
+        {menu.map((item, index) => (
           <NavLink
             key={index}
             to={item.link}
-            className={({ isActive }) => `flex items-center mt-4 py-2 px-6 bg-opacity-25 text-gray-700 dark:text-gray-100 ${isActive ? 'bg-gray-200 dark:bg-gray-700' : ''}`}
+            className={({ isActive }) =>
+              `flex items-center gap-x-4 px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150 ${
+                isActive
+                  ? "bg-yellow-700 text-white"
+                  : "text-gray-400 hover:bg-yellow-700 hover:text-white"
+              }`
+            }
             onClick={item.onClick}
           >
             <span>{item.icon}</span>
-            <span>{item.name}</span>
+            {isSidebarOpen && <span>{item.name}</span>}
           </NavLink>
         ))}
       </nav>
-        </div>
-      </div>
-    </>
+    </aside>
   );
 };
 

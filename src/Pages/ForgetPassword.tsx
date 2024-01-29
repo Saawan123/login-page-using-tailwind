@@ -1,44 +1,145 @@
-import { useState } from "react";
-import { loginFields } from "../Components/FormFields";
-import Input from "../Components/Input";
-import Button from "../Components/Button";
+// import { useState } from 'react';
+// import Input from '../Components/Input';
+// import ToastifyShow from '../Components/ToastifyShow';
+// import { useNavigate } from 'react-router-dom';
 
-const fields = loginFields;
-let fieldsState: any = {};
-fields.forEach((field: any) => (fieldsState[field.id] = ""));
+// // Dummy user data
+// let users = [
+//   { token: '12345', password: '12345' },
+// ];
+
+// export default function Forgot() {
+//   const navigate = useNavigate()
+//   const [token, setToken] = useState('');
+//   const [currentPassword, setCurrentPassword] = useState('');
+//   const [newPassword, setNewPassword] = useState('');
+
+//   const handleSubmit = (e:any) => {
+//     e.preventDefault();
+
+//     // Find user by email
+//     const user:any = users.find(u => u.token === token);
+//     if (user || user.password === currentPassword) {
+//       // Update user password
+//       user.password = newPassword;
+//       // alert('Password successfully updated!');
+//       ToastifyShow("Password successfully Changed!","success")
+//       navigate("/login")
+//     } else {
+//       // alert('Invalid credentials. Please try again.');
+//       ToastifyShow("Invalid credentials. Please try again.","error")
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+// <Input
+//   handleChange={(e:any) => setToken(e.target.value)}
+//   value={token}
+//   labelText="Token"
+//   labelFor="token"
+//   id="token"
+//   name="token"
+//   type="token"
+//   isRequired={true}
+//   placeholder="Enter your token"
+// />
+// <Input
+//   handleChange={(e:any) => setCurrentPassword(e.target.value)}
+//   value={currentPassword}
+//   labelText="Current Password"
+//   labelFor="currentPassword"
+//   id="currentPassword"
+//   name="currentPassword"
+//   type="password"
+//   isRequired={true}
+//   placeholder="Enter your current password (if know)"
+// />
+// <Input
+//   handleChange={(e:any) => setNewPassword(e.target.value)}
+//   value={newPassword}
+//   labelText="New Password"
+//   labelFor="newPassword"
+//   id="newPassword"
+//   name="newPassword"
+//   type="password"
+//   isRequired={true}
+//   placeholder="Enter your new password"
+// />
+// <button type="submit" className="...">Change Password</button>
+//     </form>
+//   );
+// }
+import { useState } from "react";
+import Input from "../Components/Input";
+import ToastifyShow from "../Components/ToastifyShow";
+import { useNavigate } from "react-router-dom";
+
+// Dummy user data
+let users = [
+  { token: "12345", password: "12345" },
+  // ... other users
+];
 
 export default function Forgot() {
-  const [loginState, setLoginState] = useState(fieldsState);
+  const navigate = useNavigate();
+  const [token, setToken] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
 
-  const handleChange = (e: any) => {
-    setLoginState({ ...loginState, [e.target.id]: e.target.value });
-  };
-  const authenticateUser = () => {
-    alert("authentication success");
-  };
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    authenticateUser();
+
+    // Find user by token
+    const user: any = users.find((u) => u.token === token);
+    if (user || user.password === currentPassword) {
+      // Update user password
+      user.password = newPassword;
+      ToastifyShow("Password successfully changed!", "success");
+      navigate("/login");
+    } else {
+      ToastifyShow("Invalid credentials. Please try again.", "error");
+    }
   };
+
   return (
-    <form className="mt-8 space-y-6">
-      <div className="-space-y-px">
-        {fields.map((field: any) => (
-          <Input
-            key={field.id}
-            handleChange={handleChange}
-            value={loginState[field.id]}
-            labelText={field.labelText}
-            labelFor={field.labelFor}
-            id={field.id}
-            name={field.name}
-            type={field.type}
-            isRequired={field.isRequired}
-            placeholder={field.placeholder}
-          />
-        ))}
-      </div>
-      <Button handleSubmit={handleSubmit} text="Update Password" />
+    <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+      <Input
+        handleChange={(e: any) => setToken(e.target.value)}
+        value={token}
+        labelText="Token"
+        labelFor="token"
+        id="token"
+        name="token"
+        type="token"
+        isRequired={true}
+        placeholder="Enter your token"
+      />
+      <Input
+        handleChange={(e: any) => setCurrentPassword(e.target.value)}
+        value={currentPassword}
+        labelText="Current Password"
+        labelFor="currentPassword"
+        id="currentPassword"
+        name="currentPassword"
+        type="password"
+        // isRequired={true}
+        placeholder="Enter your current password (if know)"
+      />
+      <Input
+        handleChange={(e: any) => setNewPassword(e.target.value)}
+        value={newPassword}
+        labelText="New Password"
+        labelFor="newPassword"
+        id="newPassword"
+        name="newPassword"
+        type="password"
+        isRequired={true}
+        placeholder="Enter your new password"
+      />
+      <button type="submit" className="...">
+        Change Password
+      </button>
     </form>
   );
 }

@@ -8,6 +8,9 @@ import ProtectedRouteUser from "./ProtectedRouteUser";
 import AdminPanel from "../Pages/AdminPanel";
 import UserProfile from "../Pages/UserProfile";
 import PageNotFound from "../Components/PageNotFound";
+import Dashboard from "../Pages/AdminPages/Dashboard";
+import Settings from "../Pages/AdminPages/Settings";
+import ServicePage from "../Pages/AdminPages/ServicePage";
 
 const PageRouter = () => {
   return (
@@ -18,6 +21,9 @@ const PageRouter = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route element={<ProtectedRouteAdmin />}>
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/setting" element={<Settings />} />
+            <Route path="/service" element={<ServicePage />} />
           </Route>
           <Route element={<ProtectedRouteUser />}>
             <Route path="/user" element={<UserProfile />} />

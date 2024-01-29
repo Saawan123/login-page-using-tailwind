@@ -1,18 +1,18 @@
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../Components/SideBar";
-import { useState } from "react";
+
+import Header from "../Components/Header";
 
 const AdminPanel = () => {
   const navigate = useNavigate();
 
   return (
     <div id="main">
-      <div className=" container">
+      <div className="container">
         <div className="flex justify-between">
-          <div>
-            <Sidebar />
-          </div>
+          {/* <div>
+            <Header />
+          </div> */}
           <div className="flex content-center mt-56 mr-56">
             <Button
               onClick={() => {
