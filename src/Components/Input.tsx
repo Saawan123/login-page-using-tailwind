@@ -46,7 +46,7 @@ export default function Input({
           >
             <button
               type="button"
-              className="text-gray-500 hover:text-gray-700 hover:outline-none hover:ring"
+              className="text-gray-500 hover:text-gray-700 hover:outline-none hover:ring z-40"
             >
               {isHovered ? <>{eyeButtonShow}</> : <>{eyeButtonHidden}</>}
             </button>

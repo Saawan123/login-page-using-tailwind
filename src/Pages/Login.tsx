@@ -7,8 +7,6 @@ import { loginFields } from "../Components/FormFields";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 import FormExtra from "../Components/FormExtra";
-import Sidebar from "../Components/SideBar";
-
 const fields = loginFields;
 let fieldsState: any = {};
 fields.forEach((field: any) => (fieldsState[field.id] = ""));
