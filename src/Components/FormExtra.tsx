@@ -1,6 +1,21 @@
+import { useState } from "react";
+import ModalShow from "./ModalShow";
+import Forgot from "../Pages/ForgetPassword";
+
 export default function FormExtra() {
+  const [modal, setShowModal] = useState(false);
+
+  // Define the props that you want to pass to the ModalShow component
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const handleApi = () => {
+    ("");
+  };
+
   return (
-    <div className="flex items-center justify-between ">
+    <div className="flex items-center justify-between">
       <div className="flex items-center">
         <input
           id="remember-me"
@@ -17,13 +32,28 @@ export default function FormExtra() {
       </div>
 
       <div className="text-sm">
-        <a
-          href="/forget-password"
-          className="font-medium text-purple-600 hover:text-purple-500"
+        <div
+          className="font-medium text-green-600 hover:text-green-500 cursor-pointer"
+          onClick={() => setShowModal(true)}
         >
-          Forgot your password?
-        </a>
-      </div>
+          Forgot Your Password?
+        </div>
+
+
+         {modal && (
+          <ModalShow
+            handleView={modal}
+            handleApi={handleApi}
+            handleClose={handleClose}
+            title="Change Your Password"
+            title1={<Forgot />}
+  
+            // title2="Confirm"
+            // cancelBtn="Cancel"
+            // Add any other props that are required by ModalShow
+          />
+        )}
+            </div>
     </div>
   );
 }

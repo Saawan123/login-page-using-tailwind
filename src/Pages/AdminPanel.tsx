@@ -8,8 +8,8 @@ const AdminPanel = () => {
 
   return (
     <div id="main">
-      <div className="container">
-        <div className="flex justify-between">
+      <div className="container ">
+        <div className="flex justify-between ">
           {/* <div>
             <Header />
           </div> */}

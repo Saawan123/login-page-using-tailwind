@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-// import MyTable from "./Data";
+import swarajLogo from "../assets/swaraj.png";
 import login from "../assets/login.png";
 import { useNavigate } from "react-router-dom";
 import { loginFields } from "../Components/FormFields";
@@ -21,12 +20,10 @@ export default function Login() {
   useEffect(() => {
     if (isLoggedIn) {
       const role = localStorage.getItem("role");
-      if(role==="user"){
-
+      if (role === "user") {
         navigate(`/${role}`);
-      }
-      else{
-        navigate("/dashboard")
+      } else {
+        navigate("/dashboard");
       }
     }
   }, [isLoggedIn]);
@@ -34,16 +31,18 @@ export default function Login() {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
   };
 
-  const authenticateUser = (token: any, password: any) => {
+  const authenticateUser = (email: any, password: any) => {
     const dummyToken = "dummy_token";
     const role =
-      token === "12345" ? "user" : token === "67890" ? "admin" : null;
+      email === "user@test.com"
+        ? "user"
+        : email === "admin@test.com"
+        ? "admin"
+        : null;
     if (role && (password === "12345" || password === "67890")) {
       localStorage.setItem("token", dummyToken);
-      localStorage.setItem("role", role); // Store the role in localStorage
-      console.log("Token set in localStorage:", localStorage.getItem("token"));
-      // alert("Authentication success! Dummy token set.");
-      ToastifyShow("Authentication success! Dummy token set.","success")
+      localStorage.setItem("role", role);
+      ToastifyShow("Authentication success! Dummy token set.", "success");
       return true;
     }
     return false;
@@ -51,17 +50,18 @@ export default function Login() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (authenticateUser(loginState?.tokenNumber, loginState?.password)) {
+    if (authenticateUser(loginState?.emailAddress, loginState?.password)) {
       const role = localStorage.getItem("role"); // Get the role from localStorage
-       if(role ==="user"){
-
+      if (role === "user") {
         navigate(`/${role}`);
-      }
-      else{
-        navigate("/dashboard")
+      } else {
+        navigate("/dashboard");
       }
     } else {
-      ToastifyShow("Authentication failed. Please check your credentials","error")
+      ToastifyShow(
+        "Authentication failed. Please check your credentials",
+        "error"
+      );
       // alert("Authentication failed. Please check your credentials.");
     }
   };
@@ -75,6 +75,18 @@ export default function Login() {
         <div className="container mx-auto w-1/2">
           <form onSubmit={handleSubmit}>
             <div className="mt-44">
+              <div>
+                <img
+                  src={swarajLogo}
+                  alt="logo"
+                  className="cursor-pointer max-w-full  ml-32 "
+                  onClick={() => {
+                    navigate("/login");
+                    localStorage.clear();
+                  }}
+                  draggable={false}
+                />
+              </div>
               <p className="text-4xl font-bold ml-5 text-gray-700 text-center text-welcomingtext">
                 Hi! Welcome
               </p>
@@ -98,11 +110,10 @@ export default function Login() {
                 ))}
               </div>
 
-              <div>
-                <div className="ml-10">
-                  <FormExtra />
-                </div>
+              <div className="ml-10">
+                <FormExtra />
               </div>
+
               <div className="ml-10">
                 <Button handleSubmit={handleSubmit} text="Login" />
               </div>
