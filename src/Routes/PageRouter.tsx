@@ -9,13 +9,13 @@ import AdminPanel from "../Pages/AdminPanel";
 import UserProfile from "../Pages/UserProfile";
 import PageNotFound from "../Components/PageNotFound";
 import Dashboard from "../Pages/AdminPages/Dashboard";
-import ServicePage from "../Pages/AdminPages/CollectionPage";
-import TrackPage from "../Pages/AdminPages/TrackPage";
+import ServicePage from "../Pages/AdminPages/collectionPage/CollectionPage";
+import TrackPage from "../Pages/AdminPages/trackPage/TrackPage";
 import Installation from "../Pages/AdminPages/installationPage/installation";
 import NewSchemes from "../Pages/AdminPages/installationPage/NewSchemes";
 import AllSchemes from "../Pages/AdminPages/installationPage/AllSchemes";
 import DraftSchemes from "../Pages/AdminPages/installationPage/DraftSchemes";
-import Collection from "../Pages/AdminPages/CollectionPage";
+import Collection from "../Pages/AdminPages/collectionPage/CollectionPage";
 
 const PageRouter = () => {
   return (

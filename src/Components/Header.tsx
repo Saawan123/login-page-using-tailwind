@@ -4,31 +4,38 @@ import swarajLogo from "../assets/swaraj.png";
 import ToastifyShow from "./ToastifyShow";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ currentTab }: any) => {
   const navigate: any = useNavigate();
   const [openItem, setOpenItem] = useState(false);
   const items = [
     {
       name: "AKHILESH SINGH",
       id: 1,
-      onClick: () => {/* handle click for AKHILESH SINGH */},
+      onClick: () => {
+        /* handle click for AKHILESH SINGH */
+      },
     },
     {
       name: "MY ACCOUNT",
       id: 2,
-      onClick: () => {/* handle click for MY ACCOUNT */},
+      onClick: () => {
+        /* handle click for MY ACCOUNT */
+      },
     },
     {
       name: "LOGOUT",
       id: 3,
-      onClick: () => {console.log("hello")}, // Navigate to /login on click
+      onClick: () => {
+        navigate("/login");
+        localStorage.clear();
+        ToastifyShow("Logged Out Successfully", "success");
+      },
     },
   ];
-  
 
   return (
     <div className="bg-green-200 py-4 m-8 rounded flex justify-between">
-      <div className="ml-8">title</div>
+      <div className="ml-8">{currentTab}</div>
       <div className="mr-8 flex items-center gap-x-4">
         <img
           src={swarajLogo}

@@ -17,17 +17,21 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
   const menu = [
     {
       name: "Dashboard",
-      icon: <RiDashboard2Line size={25} color={"green"} />,
+      icon: <RiDashboard2Line size={30} color={"green"} />,
       link: "/dashboard",
     },
     {
       name: "Collection",
-      icon: <LuFileSpreadsheet size={25} color={"green"} />,
+      icon: <LuFileSpreadsheet size={30} color={"green"} />,
       link: "/service",
+      subItems: [
+        { name: "View Collections", link: "/collections/view" },
+        { name: "Add New Collection", link: "/collections/new" },
+      ],
     },
     {
       name: "Installation",
-      icon: <LuTruck size={25} color={"green"} />,
+      icon: <LuTruck size={30} color={"green"} />,
       link: "/setting",
       subItems: [
         { name: "All Schemes", link: "/all" },
@@ -37,8 +41,12 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
     },
     {
       name: "Track",
-      icon: <RiTruckFill size={25} color={"green"} />,
+      icon: <RiTruckFill size={30} color={"green"} />,
       link: "/track",
+      subItems: [
+        { name: "Track Shipments", link: "/track/shipments" },
+        { name: "Track Orders", link: "/track/orders" },
+      ],
     },
   ];
 
@@ -95,12 +103,14 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
                 `flex items-center  gap-x-4 px-4 py-2 text-sm  font-medium rounded-lg m-1 no-underline transition-colors duration-150 ${
                   isActive
                     ? "bg-green-800  text-white"
-                    : "text-white hover:bg-green-800 hover:text-white"
+                    : "text-white hover:bg-green-800 hover:text-white "
                 }`
               }
               onClick={() => handleItemClick(item)}
             >
-              <span className="border-gray-600 bg-gray-100">{item.icon}</span>
+              <span className="border-gray-600 bg-gray-100 rounded">
+                {item.icon}
+              </span>
               {isSidebarOpen && <span>{item.name}</span>}
               {item.subItems && (
                 <span className="ml-auto ">
@@ -114,7 +124,7 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
             </NavLink>
             {item.subItems && (
               <div
-                className={`overflow-hidden ml-8 transition-max-height  duration-500 ease-in-out ${
+                className={`overflow-hidden transition-max-height  duration-900 ease-in-out ${
                   openItem === item.name ? "max-h-96" : "max-h-0"
                 }`}
               >
@@ -122,7 +132,9 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
                   <NavLink
                     key={subIndex}
                     to={subItem.link}
-                    className="block px-4  py-2 text-sm text-white no-underline hover:bg-green-800 m-4 rounded"
+                    className="block px-4  py-2 text-sm
+                     text-white focus:bg-green-800 no-underline hover:bg-green-800
+                      -ml-2 rounded"
                   >
                     {subItem.name}
                   </NavLink>

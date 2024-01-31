@@ -5,12 +5,60 @@ import Button from "./Button";
 
 interface DataType {
   key: React.Key;
-  name: string;
+  name: any;
   chinese: number;
   math: number;
   english: number;
 }
 
+
+
+const data: DataType[] = [
+  {
+    key: "1",
+    name: (
+      <p className="bg-yellow-500 rounded text-center p-1">
+        PY76HSD7120HSJ7VG6V
+      </p>
+    ),
+    chinese: 98,
+    math: 60,
+    english: 70,
+  },
+  {
+    key: "2",
+    name: (
+      <p className="bg-purple-500 rounded text-center p-1">
+        PY76HSD7120HSJ7VG6V
+      </p>
+    ),
+    chinese: 98,
+    math: 66,
+    english: 89,
+  },
+  {
+    key: "3",
+    name: (
+      <p className="bg-purple-500 rounded text-center p-1">
+        PY76HSD7120HSJ7VG6V
+      </p>
+    ),
+    chinese: 98,
+    math: 90,
+    english: 70,
+  },
+  {
+    key: "4",
+    name: (
+      <p className="bg-purple-500 rounded text-center p-1">
+        PY76HSD7120HSJ7VG6V
+      </p>
+    ),
+    chinese: 88,
+    math: 99,
+    english: 89,
+  },
+];
 const columns: TableColumnsType<DataType> = [
   {
     title: "SCHEME NO",
@@ -81,38 +129,6 @@ const columns: TableColumnsType<DataType> = [
     },
   },
 ];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    name: "John Brown",
-    chinese: 98,
-    math: 60,
-    english: 70,
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    chinese: 98,
-    math: 66,
-    english: 89,
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    chinese: 98,
-    math: 90,
-    english: 70,
-  },
-  {
-    key: "4",
-    name: "Jim Red",
-    chinese: 88,
-    math: 99,
-    english: 89,
-  },
-];
-
 const onChange: TableProps<DataType>["onChange"] = (
   pagination: any,
   filters: any,
@@ -124,8 +140,9 @@ const onChange: TableProps<DataType>["onChange"] = (
 
 const Data: React.FC = () => (
   <div className="m-8  bg-gray-100">
-    <div>
-      <Space style={{ marginBottom: 16 }} className="ml-[810px] mt-2">
+    <div className="flex">
+        <p className=" m-4 font-bold text-2xl">Collection - With Delivery Gate</p>
+      <Space style={{ marginBottom: 16 }} className="ml-[400px]">
         <Button className="w-auto h-[40px]" text="Download" />
         <Button className="w-auto h-[40px]" text="All Scheme" />
         <Button className="w-auto h-[40px]" text="Collection Scheme" />
