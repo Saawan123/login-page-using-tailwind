@@ -6,21 +6,22 @@ import Button from "../Components/Button";
 
 // Dummy user data
 let users = [
-  { token: "12345", password: "12345" },
+  { email: "user@test.com", password: "12345" },
+  { email: "admin@test.com", password: "67890" },
   // ... other users
 ];
 
 export default function Forgot() {
   const navigate = useNavigate();
-  const [token, setToken] = useState("");
+  const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
-    const user = users.find((u) => u.token === token);
+    const user = users.find((u) =>console.log(u,"uuuuu"));
     if (user && (user.password === currentPassword || currentPassword === "")) {
+      console.log("hello123", user);
       user.password = newPassword;
       ToastifyShow("Password successfully changed!", "success");
       navigate("/login");
@@ -32,15 +33,15 @@ export default function Forgot() {
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
       <Input
-        handleChange={(e: any) => setToken(e.target.value)}
-        value={token}
-        labelText="Token"
-        labelFor="token"
-        id="token"
-        name="token"
-        type="token"
+        handleChange={(e: any) => setEmail(e.target.value)}
+        value={email}
+        labelText="Email"
+        labelFor="email"
+        id="email"
+        name="email"
+        type="email"
         isRequired={true}
-        placeholder="Enter your token"
+        placeholder="Enter your email"
       />
       <Input
         handleChange={(e: any) => setCurrentPassword(e.target.value)}

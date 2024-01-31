@@ -14,15 +14,15 @@ export default function ModalShow({
   styleClass,
 }: any) {
 
-  const modalSize = size === 'sm' ? 'max-w-lg ' : size === 'lg' ? 'max-w-6xl' : 'max-w-2xl';
+  const modalSize = size === 'sm' ? 'max-w-lg' : size === 'lg' ? 'max-w-6xl' : 'max-w-2xl';
 
   return (
-    <div className={`${handleView ? 'fixed ' : 'hidden '} inset-0 z-40 overflow-y-auto `}>
+    <div className={`${handleView ? 'fixed' : 'hidden'} inset-0 z-40 overflow-y-auto `}>
       <div className="flex items-center justify-center min-h-screen ">
-        <div className={`bg-white  rounded-lg shadow-lg ${modalSize} ${className} w-screen `}>
+        <div className={`bg-white rounded-lg shadow-lg ${modalSize} ${className} w-screen `}>
           <div className="flex justify-between items-center p-4 border-b">
             <h5 className="text-lg font-medium leading-none">{title}</h5>
-            <button onClick={handleClose} className="text-gray-700 ">
+            <button onClick={handleClose} className="text-gray-700">
               <span className="text-2xl">&times;</span>
             </button>
           </div>

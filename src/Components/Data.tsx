@@ -1,34 +1,84 @@
-import { Table, Typography } from "antd";
-import type { ColumnsType } from "antd/es/table";
+import { Space, Table, TableColumnsType, Typography } from "antd";
+import type { ColumnsType, TableProps } from "antd/es/table";
 import React from "react";
-
-const { Text } = Typography;
+import Button from "./Button";
 
 interface DataType {
-  key: string;
-  name: string;
-  borrow: number;
-  repayment: number;
-}
-
-interface FixedDataType {
   key: React.Key;
   name: string;
-  description: string;
+  chinese: number;
+  math: number;
+  english: number;
 }
 
-const columns: ColumnsType<DataType> = [
+const columns: TableColumnsType<DataType> = [
   {
-    title: "Name",
+    title: "SCHEME NO",
     dataIndex: "name",
   },
   {
-    title: "Borrow",
-    dataIndex: "borrow",
+    title: "DEALER CODE",
+    dataIndex: "chinese",
+    sorter: {
+      compare: (a, b) => a.chinese - b.chinese,
+      multiple: 3,
+    },
   },
   {
-    title: "Repayment",
-    dataIndex: "repayment",
+    title: "DEALER LOCATION",
+    dataIndex: "math",
+    sorter: {
+      compare: (a, b) => a.math - b.math,
+      multiple: 2,
+    },
+  },
+  {
+    title: "DEALER NAME",
+    dataIndex: "english",
+    sorter: {
+      compare: (a, b) => a.english - b.english,
+      multiple: 1,
+    },
+  },
+  {
+    title: "STATE",
+    dataIndex: "english",
+    sorter: {
+      compare: (a, b) => a.english - b.english,
+      multiple: 1,
+    },
+  },
+  {
+    title: "TERRIRTORY MANAGER",
+    dataIndex: "english",
+    sorter: {
+      compare: (a, b) => a.english - b.english,
+      multiple: 1,
+    },
+  },
+  {
+    title: "START MONTH",
+    dataIndex: "english",
+    sorter: {
+      compare: (a, b) => a.english - b.english,
+      multiple: 1,
+    },
+  },
+  {
+    title: "END MONTH",
+    dataIndex: "english",
+    sorter: {
+      compare: (a, b) => a.english - b.english,
+      multiple: 1,
+    },
+  },
+  {
+    title: "INDUSTRY",
+    dataIndex: "english",
+    sorter: {
+      compare: (a, b) => a.english - b.english,
+      multiple: 1,
+    },
   },
 ];
 
@@ -36,111 +86,55 @@ const data: DataType[] = [
   {
     key: "1",
     name: "John Brown",
-    borrow: 10,
-    repayment: 33,
+    chinese: 98,
+    math: 60,
+    english: 70,
   },
   {
     key: "2",
     name: "Jim Green",
-    borrow: 100,
-    repayment: 0,
+    chinese: 98,
+    math: 66,
+    english: 89,
   },
   {
     key: "3",
     name: "Joe Black",
-    borrow: 10,
-    repayment: 10,
+    chinese: 98,
+    math: 90,
+    english: 70,
   },
   {
     key: "4",
     name: "Jim Red",
-    borrow: 75,
-    repayment: 45,
+    chinese: 88,
+    math: 99,
+    english: 89,
   },
 ];
 
-const fixedColumns: ColumnsType<FixedDataType> = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    fixed: true,
-    width: 100,
-  },
-  {
-    title: "Description",
-    dataIndex: "description",
-  },
-];
-
-const fixedData: FixedDataType[] = [];
-for (let i = 0; i < 20; i += 1) {
-  console.log(i, "00000");
-  fixedData.push({
-    key: i,
-    name: ["Light", "Bamboo", "Little"][i % 3],
-    description: "Everything that has a beginning, has an end.",
-  });
-}
+const onChange: TableProps<DataType>["onChange"] = (
+  pagination: any,
+  filters: any,
+  sorter: any,
+  extra: any
+) => {
+  console.log("params", pagination, filters, sorter, extra);
+};
 
 const Data: React.FC = () => (
-  <>
-    <Table
-      columns={columns}
-      dataSource={data}
-      pagination={false}
-      bordered
-      summary={(pageData) => {
-        console.log(pageData, "00000");
-        let totalBorrow = 0;
-        let totalRepayment = 0;
-        pageData.map(({ borrow, repayment }) => {
-          console.log(borrow, repayment, "000000", totalBorrow, totalRepayment);
-          totalBorrow += borrow;
-          totalRepayment += repayment;
-        });
-        console.log("00000011===", totalBorrow, totalRepayment);
-        return (
-          <>
-            <Table.Summary.Row>
-              <Table.Summary.Cell index={0}>Total</Table.Summary.Cell>
-              <Table.Summary.Cell index={1}>
-                <Text type="danger">{totalBorrow}</Text>
-              </Table.Summary.Cell>
-              <Table.Summary.Cell index={2}>
-                <Text>{totalRepayment}</Text>
-              </Table.Summary.Cell>
-            </Table.Summary.Row>
-            <Table.Summary.Row>
-              <Table.Summary.Cell index={0}>Balance</Table.Summary.Cell>
-              <Table.Summary.Cell index={1} colSpan={2}>
-                <Text type="danger">{totalBorrow - totalRepayment}</Text>
-              </Table.Summary.Cell>
-            </Table.Summary.Row>
-          </>
-        );
-      }}
-    />
-
-    <br />
-
-    <Table
-      columns={fixedColumns}
-      dataSource={fixedData}
-      pagination={false}
-      scroll={{ x: 2000, y: 500 }}
-      bordered
-      summary={() => (
-        <Table.Summary fixed>
-          <Table.Summary.Row>
-            <Table.Summary.Cell index={0}>Summary</Table.Summary.Cell>
-            <Table.Summary.Cell index={1}>
-              This is a summary content
-            </Table.Summary.Cell>
-          </Table.Summary.Row>
-        </Table.Summary>
-      )}
-    />
-  </>
+  <div className="m-8  bg-gray-100">
+    <div>
+      <Space style={{ marginBottom: 16 }} className="ml-[810px] mt-2">
+        <Button className="w-auto h-[40px]" text="Download" />
+        <Button className="w-auto h-[40px]" text="All Scheme" />
+        <Button className="w-auto h-[40px]" text="Collection Scheme" />
+      </Space>
+    </div>
+    <div className="m-2">
+      <Table columns={columns} dataSource={data} onChange={onChange} />
+    </div>
+  </div>
 );
 
 export default Data;

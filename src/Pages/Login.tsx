@@ -87,10 +87,10 @@ export default function Login() {
                   draggable={false}
                 />
               </div>
-              <p className="text-4xl font-bold ml-5 text-gray-700 text-center text-welcomingtext">
+              <p className="text-4xl font-bold ml-5 text-[#464646] text-center text-welcomingtext">
                 Hi! Welcome
               </p>
-              <p className="text-xxl ml-14 text-wrap mt-4 ">
+              <p className="text-xxl ml-14 text-wrap mt-4 text-[#464646] text-[16px] font-[500]">
                 Please enter your details to access the portal
               </p>
               <div className="ml-10">

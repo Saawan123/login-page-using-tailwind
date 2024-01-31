@@ -47,8 +47,7 @@ export default function FormExtra() {
             handleClose={handleClose}
             title="Change Your Password"
             title1={<Forgot />}
-  
-            // title2="Confirm"
+             // title2="Confirm"
             // cancelBtn="Cancel"
             // Add any other props that are required by ModalShow
           />

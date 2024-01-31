@@ -17,17 +17,17 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
   const menu = [
     {
       name: "Dashboard",
-      icon: <RiDashboard2Line size={25} />,
+      icon: <RiDashboard2Line size={25} color={"green"} />,
       link: "/dashboard",
     },
     {
       name: "Collection",
-      icon: <LuFileSpreadsheet size={25} />,
+      icon: <LuFileSpreadsheet size={25} color={"green"} />,
       link: "/service",
     },
     {
       name: "Installation",
-      icon: <LuTruck size={25} />,
+      icon: <LuTruck size={25} color={"green"} />,
       link: "/setting",
       subItems: [
         { name: "All Schemes", link: "/all" },
@@ -37,7 +37,7 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
     },
     {
       name: "Track",
-      icon: <RiTruckFill size={25} />,
+      icon: <RiTruckFill size={25} color={"green"} />,
       link: "/track",
     },
   ];
@@ -100,7 +100,7 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
               }
               onClick={() => handleItemClick(item)}
             >
-              <span>{item.icon}</span>
+              <span className="border-gray-600 bg-gray-100">{item.icon}</span>
               {isSidebarOpen && <span>{item.name}</span>}
               {item.subItems && (
                 <span className="ml-auto ">
@@ -122,7 +122,7 @@ const Sidebar = ({ isSidebarOpen, onToggle }: any) => {
                   <NavLink
                     key={subIndex}
                     to={subItem.link}
-                    className="block px-4  py-2 text-sm text-white no-underline hover:bg-green-800"
+                    className="block px-4  py-2 text-sm text-white no-underline hover:bg-green-800 m-4 rounded"
                   >
                     {subItem.name}
                   </NavLink>
